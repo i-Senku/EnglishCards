@@ -1,0 +1,6 @@
+framework module Pods_englishcardTests {
+  umbrella header "Pods-englishcardTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
