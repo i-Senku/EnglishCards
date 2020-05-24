@@ -35,13 +35,14 @@ class CelebrationPage: UIViewController {
     
     var emitterLayer = CAEmitterLayer()
 
+    @IBOutlet weak var backButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { (timer) in
-            self.emitterr.lifetime = 0.0
-        }
-
+        
+        backButton.setGradientLayer()
     }
+    
     @IBAction func dissmis(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }

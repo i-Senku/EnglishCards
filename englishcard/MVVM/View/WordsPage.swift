@@ -18,6 +18,7 @@ class WordsPage: UIViewController{
     var wordList = [Words]()
     var myPath : IndexPath?
     let synthesizerr = AVSpeechSynthesizer()
+    var avPlayer : AVAudioPlayer?
     var progressCount : Float = 0.0
 
     
@@ -217,6 +218,7 @@ extension WordsPage : AlertShower,QuizDelegate,CheckCelebrationDelegate{
                     if word.count == wordList.count - 1 {
                         performSegue(withIdentifier: "celebration", sender: nil)
                     }else{
+                        playSound(resource: "true")
                         let nextPath = IndexPath(row: path.row+1, section: path.section)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                             self.collectionView.scrollToItem(at: nextPath, at: .centeredHorizontally, animated: true)
@@ -226,6 +228,8 @@ extension WordsPage : AlertShower,QuizDelegate,CheckCelebrationDelegate{
 
                 }else{
                     cell.checkButton.shake()
+                    playSound(resource: "false")
+                    
                 }
                 
             }else{
@@ -247,14 +251,15 @@ extension WordsPage : AlertShower,QuizDelegate,CheckCelebrationDelegate{
                 
                 if path.row == wordList.count-1 {
                     let nextPath = IndexPath(row: 0, section: path.section+1)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.collectionView.scrollToItem(at: nextPath, at: .centeredHorizontally, animated: true)
                     }
                 }else{
                     let nextPath = IndexPath(row: path.row+1, section: path.section)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.collectionView.scrollToItem(at: nextPath, at: .centeredHorizontally, animated: true)
                         self.setProgressView()
+                        
                     }
                 }
                 
@@ -271,4 +276,22 @@ extension WordsPage : AlertShower,QuizDelegate,CheckCelebrationDelegate{
         
         present(alert, animated: true, completion: nil)
     }
+}
+
+
+extension WordsPage {
+    
+    fileprivate func playSound(resource : String){
+        let path = Bundle.main.path(forResource: resource, ofType: "mp3")!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+           avPlayer =  try AVAudioPlayer(contentsOf: url)
+            print("Aktif")
+            avPlayer?.play()
+        } catch {
+            print("Error Sound")
+        }
+    }
+    
 }

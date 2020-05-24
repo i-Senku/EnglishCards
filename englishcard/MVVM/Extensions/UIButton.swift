@@ -13,7 +13,7 @@ extension UIButton {
     
     func pulse(){
         let pulse = CASpringAnimation(keyPath: "transform.scale")
-        pulse.duration = 0.5
+        pulse.duration = 0.35
         pulse.fromValue = 0.95
         pulse.toValue = 1.0
         pulse.autoreverses = true
@@ -27,7 +27,7 @@ extension UIButton {
     func shake(){
         let shake = CABasicAnimation(keyPath: "position")
         shake.duration = 0.05
-        shake.repeatCount = 3
+        shake.repeatCount = 4
         shake.autoreverses = true
         
         let fromPoint = CGPoint(x: center.x - 10, y: center.y)

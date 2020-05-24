@@ -19,6 +19,8 @@ class WordCardStep2: UICollectionViewCell {
     @IBOutlet weak var wordName: UILabel!
     @IBOutlet weak var speaker: UIImageView!
     
+    var avPlayer : AVAudioPlayer?
+    
     @IBOutlet var btnCollections: [UIButton]!
     var quizDelegate : QuizDelegate?
     
@@ -45,6 +47,7 @@ class WordCardStep2: UICollectionViewCell {
                 
                 btn.backgroundColor = #colorLiteral(red: 0.2975081275, green: 0.7736357384, blue: 1, alpha: 1)
                 btn.pulse()
+                playSound(resource: "true")
                 btnCollections.forEach { (item) in
                     if item.tag != btn.tag {
                         item.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
@@ -56,6 +59,7 @@ class WordCardStep2: UICollectionViewCell {
                 btn.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
                 btn.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
                 btn.shake()
+                playSound(resource: "false")
                 btnCollections.forEach { (item) in
                     item.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
                 }
@@ -64,5 +68,19 @@ class WordCardStep2: UICollectionViewCell {
         }
         
     }
+    
+    fileprivate func playSound(resource : String){
+        let path = Bundle.main.path(forResource: resource, ofType: "mp3")!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+           avPlayer =  try AVAudioPlayer(contentsOf: url)
+            print("Çaldı")
+            avPlayer?.play()
+        } catch {
+            print("Error Sound")
+        }
+    }
+
     
 }
