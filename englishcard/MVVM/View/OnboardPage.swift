@@ -16,7 +16,7 @@ class OnboardPage: UIViewController {
     }
 
     @IBAction func nextToPage(_ sender: Any) {
-        
+        performSegue(withIdentifier: "nextToPage", sender: nil)
     }
     
 }

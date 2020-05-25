@@ -22,6 +22,7 @@ final class HomePage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         indicator.startAnimating()
         fetchData()
     }

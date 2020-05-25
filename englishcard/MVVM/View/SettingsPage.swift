@@ -8,14 +8,13 @@
 
 import UIKit
 
-class SettingsPage: UIViewController {
+class SettingsPage: UIViewController{
 
     let headerSection = ["User","General Settings"]
     @IBOutlet weak var settingsList: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
 }

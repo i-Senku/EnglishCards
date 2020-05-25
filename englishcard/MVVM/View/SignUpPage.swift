@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignUpPage: UIViewController {
 
@@ -14,6 +15,7 @@ class SignUpPage: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var aprovePassword: UITextField!
+    let firebaseAuth = Auth.auth()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,6 +31,17 @@ class SignUpPage: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-
+    @IBAction func signUp(_ sender: Any) {
+        guard let email = email.text else {return}
+        guard let password = password.text else {return}
+        
+        firebaseAuth.createUser(withEmail: email, password: password) { (authResult, error) in
+            if error != nil {
+                print(error?.localizedDescription)
+                return
+            }
+        }
+    }
+    
 
 }

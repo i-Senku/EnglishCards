@@ -120,13 +120,13 @@ extension WordsPage : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
                     item.id == trueWord?.id
                 }
                 
+                print(tempList)
                 tempButton.forEach { (button) in
                     let randNumberList = Int.random(in: 0...tempList.count-1)
                     let randomItem = tempList.remove(at: randNumberList)
                     button.setTitle(randomItem.wordName, for: .normal)
                     button.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
                     button.tag = 0
-
                 }
             }
             cell2.wordName.text = wordList[indexPath.row].word
@@ -218,7 +218,6 @@ extension WordsPage : AlertShower,QuizDelegate,CheckCelebrationDelegate{
                     if word.count == wordList.count - 1 {
                         performSegue(withIdentifier: "celebration", sender: nil)
                     }else{
-                        playSound(resource: "true")
                         let nextPath = IndexPath(row: path.row+1, section: path.section)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                             self.collectionView.scrollToItem(at: nextPath, at: .centeredHorizontally, animated: true)
@@ -228,8 +227,6 @@ extension WordsPage : AlertShower,QuizDelegate,CheckCelebrationDelegate{
 
                 }else{
                     cell.checkButton.shake()
-                    playSound(resource: "false")
-                    
                 }
                 
             }else{
@@ -276,22 +273,4 @@ extension WordsPage : AlertShower,QuizDelegate,CheckCelebrationDelegate{
         
         present(alert, animated: true, completion: nil)
     }
-}
-
-
-extension WordsPage {
-    
-    fileprivate func playSound(resource : String){
-        let path = Bundle.main.path(forResource: resource, ofType: "mp3")!
-        let url = URL(fileURLWithPath: path)
-        
-        do {
-           avPlayer =  try AVAudioPlayer(contentsOf: url)
-            print("Aktif")
-            avPlayer?.play()
-        } catch {
-            print("Error Sound")
-        }
-    }
-    
 }

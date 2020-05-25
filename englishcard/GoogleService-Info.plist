@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>881687694344-m90phr2idsm2k0fbc1gn8tvt9bbcc8h7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.881687694344-m90phr2idsm2k0fbc1gn8tvt9bbcc8h7</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBxaR-RsLL-AqBqxRNVUH6NcBtCft5esgM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>881687694344</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>mypinky.net.flashcard</string>
+	<key>PROJECT_ID</key>
+	<string>flashcard-e0aed</string>
+	<key>STORAGE_BUCKET</key>
+	<string>flashcard-e0aed.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:881687694344:ios:abf07f198f376a4cc555bd</string>
+	<key>DATABASE_URL</key>
+	<string>https://flashcard-e0aed.firebaseio.com</string>
+</dict>
+</plist>

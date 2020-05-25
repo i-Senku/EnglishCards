@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="12p-CC-d5W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MM3-gY-JTl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -28,7 +28,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Qos-dD-6P5" kind="show" id="23l-pD-DJO"/>
+                                    <action selector="nextToPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gpW-to-5WX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -41,22 +41,23 @@
                     </view>
                     <connections>
                         <outlet property="nextPage" destination="WAG-R9-dcm" id="E9J-Jr-ojo"/>
+                        <segue destination="Qos-dD-6P5" kind="show" identifier="nextToPage" id="jsI-ee-5re"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1341" y="-94"/>
+            <point key="canvasLocation" x="-1300" y="-94"/>
         </scene>
         <!--Topics-->
         <scene sceneID="kPH-mA-aW8">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="bJZ-02-ev8" customClass="HomePage" customModule="englishcard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gF0-Rg-Kql">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bj8-RL-4cC">
-                                <rect key="frame" x="0.0" y="98" width="414" height="715"/>
+                                <rect key="frame" x="0.0" y="66" width="414" height="693"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="OwU-13-Id0">
                                     <size key="itemSize" width="201" height="177"/>
@@ -170,14 +171,14 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="l5m-1N-s2B" customClass="DetailsPage" customModule="englishcard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hf5-CK-1Pg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="L4S-uL-iC2">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="703"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zJX-Tr-xbz">
-                                <rect key="frame" x="0.0" y="224" width="414" height="448"/>
+                                <rect key="frame" x="0.0" y="210.5" width="414" height="421"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Rb8-NF-szi">
                                     <size key="itemSize" width="411" height="392"/>
@@ -187,7 +188,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="details" id="boi-0k-Jz0" customClass="Details" customModule="englishcard" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="411" height="392"/>
+                                        <rect key="frame" x="0.0" y="14.5" width="411" height="392"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nRB-Bm-qHw">
                                             <rect key="frame" x="0.0" y="0.0" width="411" height="392"/>
@@ -288,7 +289,7 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bfr-ca-gfM">
-                                <rect key="frame" x="20" y="108" width="374" height="62.5"/>
+                                <rect key="frame" x="20" y="76" width="374" height="59"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Xxp-7S-uYm">
                                         <rect key="frame" x="15" y="13" width="105" height="20"/>
@@ -362,11 +363,11 @@
             <objects>
                 <viewController id="JIv-79-MaP" customClass="WordsPage" customModule="englishcard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7BA-HD-BKY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ONg-q1-ab3">
-                                <rect key="frame" x="0.0" y="89.5" width="414" height="717"/>
+                                <rect key="frame" x="0.0" y="84" width="414" height="674"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Ihh-b0-xIq">
                                     <size key="itemSize" width="191" height="121"/>
@@ -376,7 +377,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell1" id="yzM-gw-b0z" customClass="WordCard" customModule="englishcard" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="73" width="427" height="571"/>
+                                        <rect key="frame" x="0.0" y="51.5" width="427" height="571"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8qu-WL-Ihy">
                                             <rect key="frame" x="0.0" y="0.0" width="427" height="571"/>
@@ -431,7 +432,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cell2" id="D2S-xv-vY5" customClass="WordCardStep2" customModule="englishcard" customModuleProvider="target">
-                                        <rect key="frame" x="427" y="93.5" width="359" height="530"/>
+                                        <rect key="frame" x="427" y="72" width="359" height="530"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="Adg-Th-9Hg">
                                             <rect key="frame" x="0.0" y="0.0" width="359" height="530"/>
@@ -598,7 +599,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cell3" id="O2Y-7M-ZdO" customClass="WordCardStep3" customModule="englishcard" customModuleProvider="target">
-                                        <rect key="frame" x="786" y="69" width="393" height="579"/>
+                                        <rect key="frame" x="786" y="47.5" width="393" height="579"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="PJh-ms-INy">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="579"/>
@@ -699,7 +700,7 @@
                                 </connections>
                             </collectionView>
                             <progressView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rmb-R5-6eF">
-                                <rect key="frame" x="40" y="118" width="334" height="2"/>
+                                <rect key="frame" x="40" y="86" width="334" height="2"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="5"/>
@@ -735,11 +736,11 @@
             <objects>
                 <viewController id="lU9-W7-KYR" customClass="MemberShipPage" customModule="englishcard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Irt-V9-FHr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N0A-2U-hNs">
-                                <rect key="frame" x="0.0" y="224" width="414" height="448"/>
+                                <rect key="frame" x="0.0" y="210.5" width="414" height="421"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VrT-IW-CB7">
                                     <size key="itemSize" width="401" height="463"/>
@@ -900,7 +901,7 @@
                 <navigationController id="bLP-8O-OhD" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Premium" image="suit.diamond.fill" catalog="system" id="9El-PT-Mvo"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IHz-iW-dWg">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -914,10 +915,10 @@
         <!--Profile-->
         <scene sceneID="6Ao-va-8oJ">
             <objects>
-                <navigationController id="1u8-xN-z6A" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="H1C-c1-LDL"/>
+                <navigationController modalPresentationStyle="fullScreen" id="1u8-xN-z6A" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="2" title="Profile" image="person.fill" catalog="system" id="H1C-c1-LDL"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="L5E-D6-zq3">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -933,11 +934,11 @@
             <objects>
                 <viewController id="gHi-YO-TLo" customClass="SettingsPage" customModule="englishcard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Crc-hY-cGt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xOL-cM-0xu">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settings1" id="Nif-RG-NoB" customClass="SettingsFirst" customModule="englishcard" customModuleProvider="target">
@@ -1049,17 +1050,17 @@
             <objects>
                 <viewController id="FA6-iT-t5Y" customClass="CelebrationPage" customModule="englishcard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WyM-8o-KTT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tebrikler" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gX2-I3-GYl">
-                                <rect key="frame" x="160" y="433.5" width="94.5" height="29"/>
+                                <rect key="frame" x="160" y="406.5" width="94.5" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MB6-sc-0ie">
-                                <rect key="frame" x="50" y="482.5" width="314" height="40"/>
+                                <rect key="frame" x="50" y="455.5" width="314" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="3ln-Un-JVa"/>
@@ -1102,7 +1103,7 @@
             <objects>
                 <viewController id="uev-3N-d1J" customClass="ProfilePage" customModule="englishcard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dB1-WQ-suF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Dw-Ka-aXv">
@@ -1128,12 +1129,18 @@
                                 <state key="normal" title="Button">
                                     <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="click:" destination="uev-3N-d1J" eventType="touchUpInside" id="61l-Hc-OTe"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="EeV-fQ-wgv"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" largeTitleDisplayMode="never" id="Oy5-4h-Lvd"/>
+                    <connections>
+                        <outlet property="userName" destination="c8W-jP-mgi" id="hKA-Lg-10d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axW-Tq-bIz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1142,7 +1149,7 @@
         <!--Sign In Page-->
         <scene sceneID="I4O-ux-ePK">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="MM3-gY-JTl" customClass="SignInPage" customModule="englishcard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signPage" modalPresentationStyle="fullScreen" id="MM3-gY-JTl" customClass="SignInPage" customModule="englishcard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ARH-2o-APQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1186,7 +1193,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="12p-CC-d5W" kind="presentation" id="Zi6-sb-LfZ"/>
+                                            <action selector="signIn:" destination="MM3-gY-JTl" eventType="touchUpInside" id="0BX-cQ-OUQ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4b-sN-OBf">
@@ -1250,6 +1257,7 @@
                         <outlet property="email" destination="u7H-Yp-1Ig" id="38h-QL-7J2"/>
                         <outlet property="password" destination="IJn-Hn-8mb" id="gZx-Li-zrF"/>
                         <outlet property="signInButton" destination="5FS-bk-kTc" id="BUU-J9-vRb"/>
+                        <segue destination="12p-CC-d5W" kind="show" identifier="toHomePage" id="0z7-Rk-kwc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hgc-Dd-Zuf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1314,6 +1322,9 @@
                                                 <integer key="value" value="15"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="signUp:" destination="g5p-Ff-Mi6" eventType="touchUpInside" id="DuK-wb-8kJ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYI-Hb-o8d">
                                         <rect key="frame" x="191" y="0.0" width="183" height="35"/>
@@ -1521,7 +1532,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Tya-ep-Tip">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="12p-CC-d5W" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBar" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="12p-CC-d5W" customClass="TabBarController" customModule="englishcard" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="svJ-6s-KNh"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cII-1d-Jcj">
@@ -1547,7 +1558,7 @@
                     <tabBarItem key="tabBarItem" title="Topics" image="list.bullet" catalog="system" id="RxC-H2-cfK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="HT6-6B-1qn">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

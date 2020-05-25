@@ -9,6 +9,8 @@ target 'englishcard' do
   pod 'Alamofire', '~> 5.1'
   pod 'Kingfisher', '~> 5.14'
   pod 'lottie-ios'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
 
   # Pods for englishcard
 
