@@ -5,13 +5,7 @@
         <attribute name="wordName" optional="YES" attributeType="String"/>
         <attribute name="wordTranslate" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="Learned" representedClassName="Learned" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="wordName" optional="YES" attributeType="String"/>
-        <attribute name="wordTranslate" optional="YES" attributeType="String"/>
-    </entity>
     <elements>
         <element name="Favorites" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="Learned" positionX="-54" positionY="-9" width="128" height="88"/>
     </elements>
 </model>
