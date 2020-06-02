@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import Lottie
 
 final class HomePage: UIViewController {
     
@@ -20,10 +21,17 @@ final class HomePage: UIViewController {
     var imageList : [UIImage?] = [UIImage?]()
     var id = 0
     
+    let animationView : AnimationView = {
+        let view = AnimationView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        let animation = Animation.named("water")
+        view.animation = animation
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        indicator.startAnimating()
+        layoutAnimationView()
         fetchData()
     }
     
@@ -34,6 +42,19 @@ final class HomePage: UIViewController {
             vc.id = id
         }
     }
+    
+    fileprivate func layoutAnimationView(){
+        view.addSubview(animationView)
+        animationView.backgroundBehavior = .pauseAndRestore
+        animationView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
+        animationView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        
+        animationView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -12).isActive = true
+        animationView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        animationView.setContentCompressionResistancePriority(.fittingSizeLevel, for: .horizontal)
+        animationView.play()
+    }
+    
 }
 
 extension HomePage : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
@@ -94,8 +115,8 @@ extension HomePage{
                             }
                         }
                         DispatchQueue.main.async {
-                            self.indicator.stopAnimating()
-                            self.indicator.isHidden = true
+                            self.animationView.stop()
+                            self.animationView.isHidden = true
                             self.cardList.reloadData()
                         }
                     }

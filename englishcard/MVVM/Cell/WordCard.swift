@@ -10,45 +10,57 @@ import UIKit
 import Lottie
 
 protocol AlertShower{
-    func showAlert(cell: WordCard)
+    func showAlert()
+}
+
+protocol FavoriteItemDelegate {
+    func addItem()
+    func deleteItem()
 }
 
 class WordCard: UICollectionViewCell {
     
-    @IBOutlet weak var likeImage: UIImageView!
     @IBOutlet weak var wordName: UILabel!
     @IBOutlet weak var wordImageLabel: UILabel!
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var heartImage: UIImageView!
     
-    let heartAnimation : AnimatedButton = {
+    var heartAnimation : AnimatedButton = {
         let animation = Animation.named("TwitterHeartButton")!
         let view = AnimatedButton(animation: animation)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFill
-        view.setPlayRange(fromMarker: "touchDownStart", toMarker: "touchDownEnd", event: .touchDown)
-        view.setPlayRange(fromMarker: "touchDownEnd", toMarker: "touchUpCancel", event: .touchUpOutside)
-        view.setPlayRange(fromMarker: "touchDownEnd", toMarker: "touchUpEnd", event: .touchUpInside)
         return view
     }()
     
     
     var delegate : AlertShower?
+    var itemDelegate : FavoriteItemDelegate?
     var isShow = false
+    var isItemSelect = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupAnimation()
-        
+        imageRecognizer()
+        //setupAnimation()
     }
     
     func imageRecognizer() -> () {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(liked))
-        likeImage.addGestureRecognizer(gesture)
-        likeImage.isUserInteractionEnabled = true
+        heartImage.addGestureRecognizer(gesture)
+        heartImage.isUserInteractionEnabled = true
     }
 
     @objc func liked(){
-        delegate?.showAlert(cell: self)
+        isItemSelect = !isItemSelect
+        if isItemSelect {
+            heartImage.image = UIImage(systemName: "heart.fill")
+            itemDelegate?.addItem()
+            delegate?.showAlert()
+        }else{
+            heartImage.image = UIImage(systemName: "heart")
+            itemDelegate?.deleteItem()
+        }
     }
     
     private func setupAnimation(){

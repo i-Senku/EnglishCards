@@ -17,11 +17,14 @@ class PageViewController: UIPageViewController{
             UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "signPage")
         ]
     }()
+    
     let fireBaseAuth = Auth.auth()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         if fireBaseAuth.currentUser != nil {
             setViewControllers([subViewController[0]], direction: .forward, animated: true, completion: nil)
         }else{

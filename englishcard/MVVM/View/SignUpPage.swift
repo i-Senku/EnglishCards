@@ -34,13 +34,38 @@ class SignUpPage: UIViewController {
     @IBAction func signUp(_ sender: Any) {
         guard let email = email.text else {return}
         guard let password = password.text else {return}
+        guard let aprovePassword = aprovePassword.text else {return}
+        guard let userName = username.text else {return}
         
-        firebaseAuth.createUser(withEmail: email, password: password) { (authResult, error) in
-            if error != nil {
-                print(error?.localizedDescription)
-                return
+        if aprovePassword != password {
+            showAlert(message: "Passwords must be the same")
+        }else{
+            
+            
+            firebaseAuth.createUser(withEmail: email, password: password) { (authResult, error) in
+                if let myError = error {
+                    self.showAlert(message: myError.localizedDescription)
+                    return
+                }
+                let request = authResult?.user.createProfileChangeRequest()
+                request?.displayName = userName
+                request?.commitChanges(completion: { (error) in
+                    if error != nil {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    
+                })
             }
         }
+    }
+    
+    fileprivate func showAlert(message : String){
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okeyAction = UIAlertAction(title: "OK", style: .destructive) { _ in}
+        
+        alertController.addAction(okeyAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
 

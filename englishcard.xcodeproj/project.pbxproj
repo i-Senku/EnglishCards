@@ -10,6 +10,7 @@
 		7366EBD345781AFEA4FF371E /* Pods_englishcardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DCD3F1D6CE2EE763074A79 /* Pods_englishcardTests.framework */; };
 		D008B4780C138332CF9F0773 /* Pods_englishcard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 789305D547CF4F0A914A8EA3 /* Pods_englishcard.framework */; };
 		D7A0F3A99C71CD7D509C76C1 /* Pods_englishcard_englishcardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 093716AB10146C74D21F07FF /* Pods_englishcard_englishcardUITests.framework */; };
+		FE03699A2482A743000BBB02 /* water.json in Resources */ = {isa = PBXBuildFile; fileRef = FE0369992482A742000BBB02 /* water.json */; };
 		FE04B60F246A14520029E467 /* HomePageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE04B60E246A14520029E467 /* HomePageVM.swift */; };
 		FE08148F243BACE900E62853 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE08148E243BACE900E62853 /* TextField.swift */; };
 		FE0AF7F224390D950014B72F /* SignInPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0AF7F124390D950014B72F /* SignInPage.swift */; };
@@ -22,7 +23,6 @@
 		FE384B71244A7A1A003771AA /* WordCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE384B70244A7A1A003771AA /* WordCard.swift */; };
 		FE3F0EAB247B1BF800593352 /* true.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FE3F0EA9247B1BF800593352 /* true.mp3 */; };
 		FE3F0EAC247B1BF800593352 /* false.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FE3F0EAA247B1BF800593352 /* false.mp3 */; };
-		FE446F6E2453AC4200C31FC5 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE446F6D2453AC4200C31FC5 /* Favorites.swift */; };
 		FE6BE6B6246C6FFE00419331 /* Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6BE6B5246C6FFE00419331 /* Words.swift */; };
 		FE6BE6BA246C84D500419331 /* DetailsPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6BE6B9246C84D500419331 /* DetailsPageVM.swift */; };
 		FE80F308246AF6A8002EA358 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE80F307246AF6A8002EA358 /* UIImage.swift */; };
@@ -91,6 +91,7 @@
 		7904BEA18D4C819461C231DD /* Pods-englishcard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-englishcard.debug.xcconfig"; path = "Target Support Files/Pods-englishcard/Pods-englishcard.debug.xcconfig"; sourceTree = "<group>"; };
 		9856B68B2B9D291DEAE04144 /* Pods-englishcard-englishcardUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-englishcard-englishcardUITests.debug.xcconfig"; path = "Target Support Files/Pods-englishcard-englishcardUITests/Pods-englishcard-englishcardUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1DCD3F1D6CE2EE763074A79 /* Pods_englishcardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_englishcardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE0369992482A742000BBB02 /* water.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = water.json; sourceTree = "<group>"; };
 		FE04B60E246A14520029E467 /* HomePageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageVM.swift; sourceTree = "<group>"; };
 		FE08148E243BACE900E62853 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		FE0AF7F124390D950014B72F /* SignInPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPage.swift; sourceTree = "<group>"; };
@@ -103,7 +104,6 @@
 		FE384B70244A7A1A003771AA /* WordCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCard.swift; sourceTree = "<group>"; };
 		FE3F0EA9247B1BF800593352 /* true.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = true.mp3; sourceTree = "<group>"; };
 		FE3F0EAA247B1BF800593352 /* false.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = false.mp3; sourceTree = "<group>"; };
-		FE446F6D2453AC4200C31FC5 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 		FE6BE6B5246C6FFE00419331 /* Words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Words.swift; sourceTree = "<group>"; };
 		FE6BE6B9246C84D500419331 /* DetailsPageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPageVM.swift; sourceTree = "<group>"; };
 		FE80F307246AF6A8002EA358 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -213,6 +213,7 @@
 		FE30C65E2471C77B00DE09E3 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				FE0369992482A742000BBB02 /* water.json */,
 				FE30C6612471D16100DE09E3 /* TwitterHeartButton.json */,
 			);
 			path = Animation;
@@ -379,7 +380,6 @@
 				FE384B70244A7A1A003771AA /* WordCard.swift */,
 				FE2F65F3245051EC008EEB1D /* WordCardStep2.swift */,
 				FE2F65F52450521B008EEB1D /* WordCardStep3.swift */,
-				FE446F6D2453AC4200C31FC5 /* Favorites.swift */,
 				FEDC487D24570DA6000D11D6 /* MemberShip.swift */,
 				FEDC487F24570E0B000D11D6 /* Settings.swift */,
 				FEDC488124570E34000D11D6 /* SettingsFirst.swift */,
@@ -501,6 +501,7 @@
 				FEC496B62438F32100A1BA74 /* LaunchScreen.storyboard in Resources */,
 				FE3F0EAB247B1BF800593352 /* true.mp3 in Resources */,
 				FE30C6622471D16100DE09E3 /* TwitterHeartButton.json in Resources */,
+				FE03699A2482A743000BBB02 /* water.json in Resources */,
 				FEC496B32438F32100A1BA74 /* Assets.xcassets in Resources */,
 				FEC496AE2438F31F00A1BA74 /* Main.storyboard in Resources */,
 				FEB95C48247BE2C000A7513A /* GoogleService-Info.plist in Resources */,
@@ -673,7 +674,6 @@
 				FED1C6D9246FF9AD00192181 /* CelebrationPage.swift in Sources */,
 				FEB95C4A247C0A3800A7513A /* TabBarController.swift in Sources */,
 				FEFC48ED24429B8700CA4574 /* DetailsPage.swift in Sources */,
-				FE446F6E2453AC4200C31FC5 /* Favorites.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

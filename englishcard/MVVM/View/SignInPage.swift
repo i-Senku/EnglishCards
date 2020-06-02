@@ -32,14 +32,22 @@ class SignInPage: UIViewController {
         guard let password = password.text else {return}
         
         firebaseAuth.signIn(withEmail: email, password: password) { (authResult, error) in
-            if error != nil {
-                print(error.debugDescription)
+            if let myError = error {
+                self.showAlert(message: myError.localizedDescription)
                 return
             }
-            
-            self.performSegue(withIdentifier: "toHomePage", sender: nil)
-            
+            NotificationCenter.default.post(name: .changeIndex, object: nil)
+            self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    fileprivate func showAlert(message : String){
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okeyAction = UIAlertAction(title: "OK", style: .destructive) { _ in}
+        
+        alertController.addAction(okeyAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
 

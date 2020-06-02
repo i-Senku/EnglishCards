@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 class WordsPage: UIViewController{
 
@@ -16,10 +17,14 @@ class WordsPage: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
     let wordTranslateVM = WordTranslateVM()
     var wordList = [Words]()
+    var favoriteList = [Favorites]()
     var myPath : IndexPath?
     let synthesizerr = AVSpeechSynthesizer()
     var avPlayer : AVAudioPlayer?
     var progressCount : Float = 0.0
+    
+    let context = appDelegate.persistentContainer.viewContext
+    
 
     
     // MARK: Create Touch Image
@@ -30,9 +35,13 @@ class WordsPage: UIViewController{
         view.alpha = 0
         return view
     }()
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchFavoriteListFromCoreData()
+        
         wordTranslateVM.fetchTranslateWord {
             var tempList : [Translate] = [Translate]()
             self.wordTranslateVM.translateList.forEach { (item) in
@@ -45,9 +54,9 @@ class WordsPage: UIViewController{
             self.wordTranslateVM.translateList = tempList
             self.collectionView.reloadData()
         }
+        
         progressView.transform = CGAffineTransform(scaleX: 1.0, y: 5.0)
         view.addSubview(touchImage)
-        //tabBarController?.tabBar.isHidden = true
         touchAnimation()
     }
     
@@ -73,6 +82,16 @@ class WordsPage: UIViewController{
         }
     }
     
+    func fetchFavoriteListFromCoreData(){
+        let fetchRequest:NSFetchRequest<Favorites> = Favorites.fetchRequest()
+        
+        do {
+            favoriteList = try context.fetch(fetchRequest)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
     
 }
 
@@ -95,12 +114,23 @@ extension WordsPage : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
         let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath) as! WordCardStep2
         let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "cell3", for: indexPath) as! WordCardStep3
         
+        // MARK: First Card Section = 0
         if indexPath.section == 0 {
             cell1.delegate = self
+            cell1.itemDelegate = self
             cell1.wordName.text = wordList[indexPath.row].word
             cell1.wordImageLabel.text = "🙈"
-            cell1.isShow = false
-        }else if indexPath.section == 1 {
+            cell1.heartImage.image = UIImage(systemName: "heart")
+            
+            favoriteList.forEach { (item) in
+                if item.id == wordList[indexPath.row].id {
+                    cell1.isItemSelect = true
+                    cell1.heartImage.image = UIImage(systemName: "heart.fill")
+                }
+            }
+            
+        }// MARK: Second Card Section = 1
+        else if indexPath.section == 1 {
             
             let id = wordList[indexPath.row].turkishID
             let trueWord = wordTranslateVM.translateList.first { (item) -> Bool in
@@ -133,6 +163,7 @@ extension WordsPage : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
             cell2.quizDelegate = self
             
         }else{
+            // MARK: Last Card Section = 2
             cell3.wordName.text = wordTranslateVM.translateList[indexPath.row].wordName
             cell3.wordText.text = ""
             cell3.checkButton.setTitle("Check", for: .normal)
@@ -202,7 +233,55 @@ extension WordsPage : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
 }
 
 // MARK: Alert and Celebration Delegate Functions
-extension WordsPage : AlertShower,QuizDelegate,CheckCelebrationDelegate{
+extension WordsPage : AlertShower,QuizDelegate,CheckCelebrationDelegate,FavoriteItemDelegate{
+    
+    func addItem() {
+        
+        if let path = collectionView.indexPathsForVisibleItems.first {
+            let favorites = Favorites(context: context)
+            
+            favorites.id = Int32(self.wordList[path.row].id)
+            favorites.wordName = self.wordList[path.row].word
+            self.wordTranslateVM.translateList.forEach { (item) in
+                if self.wordList[path.row].id == item.id {
+                    favorites.wordTranslate = item.wordName
+                }
+            }
+            
+            do {
+                try context.save()
+                print("Kayıt Edildi")
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+        
+    }
+    
+    func deleteItem() {
+        let fetchRequest:NSFetchRequest<Favorites> = Favorites.fetchRequest()
+        
+        do {
+            let list =  try context.fetch(fetchRequest)
+            
+            if let path = collectionView.indexPathsForVisibleItems.first {
+                var deletedItem : Favorites?
+                list.forEach { (item) in
+                    if self.wordList[path.row].id == item.id {
+                        deletedItem = item
+                        context.delete(item)
+                    }
+                }
+                if let _ = deletedItem {
+                    try context.save()
+                }
+            }
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
     
     func checkCelebration(word: String) {
         self.view.endEditing(true)
@@ -264,7 +343,7 @@ extension WordsPage : AlertShower,QuizDelegate,CheckCelebrationDelegate{
         }
     }
     
-    func showAlert(cell: WordCard) {
+    func showAlert() {
         let alert = UIAlertController(title: "Like", message: "Added the words to favorite page", preferredStyle: .alert)
         
         let actionOkey = UIAlertAction(title: "Okay", style: .default) { (_) in
