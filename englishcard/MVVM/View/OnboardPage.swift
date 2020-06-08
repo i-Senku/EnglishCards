@@ -16,6 +16,7 @@ class OnboardPage: UIViewController {
     }
 
     @IBAction func nextToPage(_ sender: Any) {
+        UserDefaults.standard.set(true, forKey: "isFirst")
         performSegue(withIdentifier: "nextToPage", sender: nil)
     }
     

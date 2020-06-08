@@ -27,10 +27,11 @@ class ProfilePage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let notification = NotificationCenter.default
+        notification.addObserver(self, selector: #selector(updateTableViewWithNotification), name: .updateCoreData, object: nil)
     }
+    
     override func viewWillAppear(_ animated: Bool) {
-        print("Çalıştı")
         fetchItem()
         if let currentUser = firebaseAuth.currentUser {
             userName.text = currentUser.displayName
@@ -46,6 +47,10 @@ class ProfilePage: UIViewController {
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+    
+    @objc func updateTableViewWithNotification(){
+        fetchItem()
     }
     
     func fetchItem(){

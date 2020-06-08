@@ -8,9 +8,10 @@
 
 import UIKit
 import Lottie
+import FirebaseAuth
 
 protocol AlertShower{
-    func showAlert()
+    func showAlert(title:String, message:String)->()
 }
 
 protocol FavoriteItemDelegate {
@@ -33,7 +34,7 @@ class WordCard: UICollectionViewCell {
         return view
     }()
     
-    
+    let firebaseAuth = Auth.auth()
     var delegate : AlertShower?
     var itemDelegate : FavoriteItemDelegate?
     var isShow = false
@@ -52,15 +53,26 @@ class WordCard: UICollectionViewCell {
     }
 
     @objc func liked(){
-        isItemSelect = !isItemSelect
-        if isItemSelect {
-            heartImage.image = UIImage(systemName: "heart.fill")
-            itemDelegate?.addItem()
-            delegate?.showAlert()
+        if firebaseAuth.currentUser != nil{
+            
+            if !isItemSelect {
+                heartImage.image = UIImage(systemName: "heart.fill")
+                itemDelegate?.addItem()
+                delegate?.showAlert(title: "Added", message: "This word added your favorites box")
+            }else{
+                heartImage.image = UIImage(systemName: "heart")
+                itemDelegate?.deleteItem()
+                delegate?.showAlert(title: "Deleted", message: "This word deleted from your favorites box")
+            }
+            
+            print(isSelected)
+            isItemSelect = !isItemSelect
+            NotificationCenter.default.post(name: .updateCoreData, object: nil)
+            
         }else{
-            heartImage.image = UIImage(systemName: "heart")
-            itemDelegate?.deleteItem()
+            delegate?.showAlert(title: "Login Failed", message: "Please Register")
         }
+
     }
     
     private func setupAnimation(){

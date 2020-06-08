@@ -9,9 +9,6 @@
 import UIKit
 import FirebaseAuth
 
-extension Notification.Name {
-    static let changeIndex = Notification.Name(rawValue: "changeIndex")
-}
 
 class TabBarController: UITabBarController , UITabBarControllerDelegate{
 

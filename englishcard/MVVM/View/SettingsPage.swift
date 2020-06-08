@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsPage: UIViewController{
 
-    let headerSection = ["User","General Settings"]
+
     @IBOutlet weak var settingsList: UITableView!
     
     override func viewDidLoad() {
@@ -25,24 +25,31 @@ extension SettingsPage : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if section == 0 {
+            return 1
+        }else{
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            let cellFirst = tableView.dequeueReusableCell(withIdentifier: "settings1", for: indexPath) as! SettingsFirst
-            return cellFirst
+            let cellfirst = tableView.dequeueReusableCell(withIdentifier: "settings1", for: indexPath) as! SettingsFirst
+            cellfirst.settingName.text = "Language"
+            return cellfirst
         }else{
             let cellSecond = tableView.dequeueReusableCell(withIdentifier: "settings2", for: indexPath) as! Settings
+            cellSecond.settingName.text = "Sounds"
             return cellSecond
         }
+            
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    /*func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
         let title = UILabel()
@@ -60,6 +67,6 @@ extension SettingsPage : UITableViewDelegate,UITableViewDataSource {
             title.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 10)
         ])
         return view
-    }
+    }*/
     
 }

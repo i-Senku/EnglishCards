@@ -25,3 +25,10 @@ enum Images {
     static let swirl = UIImage(named: "Spiral")!
     
 }
+
+enum Sounds : String{
+    
+    case trueSound = "true"
+    case falseSound = "false"
+    
+}

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol CheckCelebrationDelegate {
     func checkCelebration(word:String)
@@ -17,7 +18,7 @@ class WordCardStep3: UICollectionViewCell {
     @IBOutlet weak var wordText: UITextField!
     @IBOutlet weak var wordName: UILabel!
     @IBOutlet weak var checkButton: UIButton!
-    
+        
     var delegate : CheckCelebrationDelegate?
     
     override func awakeFromNib() {
@@ -32,4 +33,5 @@ class WordCardStep3: UICollectionViewCell {
     @IBAction func checkText(_ sender: Any) {
         delegate?.checkCelebration(word: wordText.text!.lowercased())
     }
+    
 }

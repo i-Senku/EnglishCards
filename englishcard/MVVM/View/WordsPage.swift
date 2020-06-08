@@ -78,6 +78,7 @@ class WordsPage: UIViewController{
         UIView.animate(withDuration: 0.5) {
             let sayi : Float = Float(1.0 / Float(self.wordList.count*3))
             self.progressCount += sayi
+            print("Progress : \(self.progressCount)")
             self.progressView.setProgress(self.progressCount, animated: true)
         }
     }
@@ -89,6 +90,19 @@ class WordsPage: UIViewController{
             favoriteList = try context.fetch(fetchRequest)
         } catch let error {
             print(error.localizedDescription)
+        }
+    }
+    
+    fileprivate func playSound(sounds : Sounds){
+        let path = Bundle.main.path(forResource: sounds.rawValue, ofType: "mp3")!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+           avPlayer =  try AVAudioPlayer(contentsOf: url)
+            print("Çaldı")
+            avPlayer?.play()
+        } catch {
+            print("Error Sound")
         }
     }
     
@@ -126,6 +140,9 @@ extension WordsPage : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
                 if item.id == wordList[indexPath.row].id {
                     cell1.isItemSelect = true
                     cell1.heartImage.image = UIImage(systemName: "heart.fill")
+                }else{
+                    cell1.heartImage.image = UIImage(systemName: "heart")
+                    cell1.isItemSelect = false
                 }
             }
             
@@ -150,7 +167,6 @@ extension WordsPage : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
                     item.id == trueWord?.id
                 }
                 
-                print(tempList)
                 tempButton.forEach { (button) in
                     let randNumberList = Int.random(in: 0...tempList.count-1)
                     let randomItem = tempList.remove(at: randNumberList)
@@ -293,19 +309,27 @@ extension WordsPage : AlertShower,QuizDelegate,CheckCelebrationDelegate,Favorite
                 
                 if word == wordList[path.row].word.lowercased() {
                     cell.checkButton.pulse()
-
-                    if word.count == wordList.count - 1 {
-                        performSegue(withIdentifier: "celebration", sender: nil)
+                    print(word)
+                    print(wordList.last!.word)
+                    if word == wordList.last!.word.lowercased(){
+                        self.playSound(sounds: .trueSound)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            self.setProgressView()
+                            self.performSegue(withIdentifier: "celebration", sender: nil)
+                        }
+                        
                     }else{
                         let nextPath = IndexPath(row: path.row+1, section: path.section)
+                        self.playSound(sounds: .trueSound)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                            self.collectionView.scrollToItem(at: nextPath, at: .centeredHorizontally, animated: true)
                             self.setProgressView()
+                            self.collectionView.scrollToItem(at: nextPath, at: .centeredHorizontally, animated: true)
                         }
                     }
 
                 }else{
                     cell.checkButton.shake()
+                    self.playSound(sounds: .falseSound)
                 }
                 
             }else{
@@ -328,6 +352,7 @@ extension WordsPage : AlertShower,QuizDelegate,CheckCelebrationDelegate,Favorite
                 if path.row == wordList.count-1 {
                     let nextPath = IndexPath(row: 0, section: path.section+1)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.setProgressView()
                         self.collectionView.scrollToItem(at: nextPath, at: .centeredHorizontally, animated: true)
                     }
                 }else{
@@ -343,8 +368,8 @@ extension WordsPage : AlertShower,QuizDelegate,CheckCelebrationDelegate,Favorite
         }
     }
     
-    func showAlert() {
-        let alert = UIAlertController(title: "Like", message: "Added the words to favorite page", preferredStyle: .alert)
+    func showAlert(title:String, message:String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let actionOkey = UIAlertAction(title: "Okay", style: .default) { (_) in
         }

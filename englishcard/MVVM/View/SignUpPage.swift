@@ -50,8 +50,10 @@ class SignUpPage: UIViewController {
                 let request = authResult?.user.createProfileChangeRequest()
                 request?.displayName = userName
                 request?.commitChanges(completion: { (error) in
-                    if error != nil {
+                    if error == nil {
+                    print("Kayıt oldu")
                         self.navigationController?.popViewController(animated: true)
+                        self.dismiss(animated: true, completion: nil)
                     }
                     
                 })

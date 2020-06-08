@@ -17,21 +17,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        /*window = UIWindow(windowScene: windowScene)
-        let firebaseAuth = Auth.auth()
+        window = UIWindow(windowScene: windowScene)
+        
         
         let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
         let tabBarVC = storyBoard.instantiateViewController(withIdentifier: "tabBar") as! TabBarController
-        let signPageVC = storyBoard.instantiateViewController(withIdentifier: "signPage") as! SignInPage
-
+        let onboardPageVC = storyBoard.instantiateViewController(withIdentifier: "onboard") as! OnboardPage
         
-        if firebaseAuth.currentUser != nil {
+        let result = UserDefaults.standard.bool(forKey: "isFirst")
+        
+        if result {
             window?.rootViewController = tabBarVC
         }else{
-            window?.rootViewController = signPageVC
+            window?.rootViewController = onboardPageVC
         }
+        
         window?.makeKeyAndVisible()
-        */
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

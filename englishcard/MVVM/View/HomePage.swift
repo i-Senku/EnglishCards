@@ -24,7 +24,7 @@ final class HomePage: UIViewController {
     let animationView : AnimationView = {
         let view = AnimationView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        let animation = Animation.named("water")
+        let animation = Animation.named("progress")
         view.animation = animation
         return view
     }()
@@ -49,10 +49,11 @@ final class HomePage: UIViewController {
         animationView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
         animationView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         
-        animationView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -12).isActive = true
+        animationView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
         animationView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         animationView.setContentCompressionResistancePriority(.fittingSizeLevel, for: .horizontal)
         animationView.play()
+        animationView.loopMode = .loop
     }
     
 }

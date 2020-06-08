@@ -10,6 +10,7 @@ import UIKit
 
 class Settings: UITableViewCell {
 
+    @IBOutlet weak var settingName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
