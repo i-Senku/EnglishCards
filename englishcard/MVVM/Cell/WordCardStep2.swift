@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-protocol QuizDelegate {
+protocol QuizDelegate : AnyObject {
     func checkQuestion(status : Bool)
 }
 
@@ -22,7 +22,7 @@ class WordCardStep2: UICollectionViewCell {
     var avPlayer : AVAudioPlayer?
     
     @IBOutlet var btnCollections: [UIButton]!
-    var quizDelegate : QuizDelegate?
+    weak var quizDelegate : QuizDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

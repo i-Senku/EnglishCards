@@ -13,8 +13,8 @@ class HomePageVM {
     var categories : [Category] = [Category]()
         
     func getCategory(completionHandler : @escaping ()->()) -> Void {
-        fetchData { (list) in
-            self.categories = list
+        fetchData { [weak self] list in
+            self!.categories = list
             completionHandler()
         }
     }

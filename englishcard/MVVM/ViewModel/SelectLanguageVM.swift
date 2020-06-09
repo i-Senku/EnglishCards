@@ -10,7 +10,7 @@ import Foundation
 
 struct SelectLanguageVM {
     
-    let languages : [SelectLanguage] = [
+    static let languages : [SelectLanguage] = [
         SelectLanguage(languageName: "Türkçe", languageImage: "turkey"),
         SelectLanguage(languageName: "English", languageImage: "us"),
         SelectLanguage(languageName: "Spanish", languageImage: "spain")

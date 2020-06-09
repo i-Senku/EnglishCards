@@ -10,11 +10,11 @@ import UIKit
 import Lottie
 import FirebaseAuth
 
-protocol AlertShower{
+protocol AlertShower : AnyObject{
     func showAlert(title:String, message:String)->()
 }
 
-protocol FavoriteItemDelegate {
+protocol FavoriteItemDelegate: AnyObject{
     func addItem()
     func deleteItem()
 }
@@ -35,8 +35,8 @@ class WordCard: UICollectionViewCell {
     }()
     
     let firebaseAuth = Auth.auth()
-    var delegate : AlertShower?
-    var itemDelegate : FavoriteItemDelegate?
+    weak var delegate : AlertShower?
+    weak var itemDelegate : FavoriteItemDelegate?
     var isShow = false
     var isItemSelect = false
     

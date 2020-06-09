@@ -12,8 +12,8 @@ class DetailsPageVM {
     var words : [Words] = [Words]()
         
     func getCategory(id:Int?,completionHandler : @escaping ()->()) -> Void {
-        fetchWords(id: id) { (words) in
-            self.words = words
+        fetchWords(id: id) { [weak self] words in
+            self!.words = words
             completionHandler()
         }
     }

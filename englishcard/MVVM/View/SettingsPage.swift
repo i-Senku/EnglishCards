@@ -9,14 +9,31 @@
 import UIKit
 
 class SettingsPage: UIViewController{
+    
+    
 
-
+    @IBOutlet weak var pickerBar: UIView!
+    @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var settingsList: UITableView!
+    @IBOutlet weak var heightPickerView: NSLayoutConstraint!
+    
+    let defaults = UserDefaults.standard
+    
+    
+    let SettingsFirstList = ["Languages","Privacy"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
+    @IBAction func donePicker(_ sender: Any) {
+        heightPickerView.constant = 0
+        UIView.animate(withDuration: 0.5) {
+            self.pickerBar.alpha = 0
+            self.view.layoutIfNeeded()
+        }
+    }
+    
 }
 
 extension SettingsPage : UITableViewDelegate,UITableViewDataSource {
@@ -25,8 +42,8 @@ extension SettingsPage : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
+        if section != 0 {
+            return 2
         }else{
             return 1
         }
@@ -34,13 +51,20 @@ extension SettingsPage : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
+        if indexPath.section == 1 {
             let cellfirst = tableView.dequeueReusableCell(withIdentifier: "settings1", for: indexPath) as! SettingsFirst
-            cellfirst.settingName.text = "Language"
+            cellfirst.settingName.text = SettingsFirstList[indexPath.row]
+            cellfirst.delegate = self
+            cellfirst.selectedButton.tag = indexPath.row
             return cellfirst
         }else{
             let cellSecond = tableView.dequeueReusableCell(withIdentifier: "settings2", for: indexPath) as! Settings
             cellSecond.settingName.text = "Sounds"
+            if defaults.bool(forKey: "sound") {
+                cellSecond.soundSwitch.isOn = true
+            }else{
+                cellSecond.soundSwitch.isOn = false
+            }
             return cellSecond
         }
             
@@ -49,24 +73,33 @@ extension SettingsPage : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
-    /*func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
-        let title = UILabel()
-        
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = headerSection[section]
-        title.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        
-        
-        
-        view.addSubview(title)
-        
-        NSLayoutConstraint.activate([
-            title.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            title.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 10)
-        ])
-        return view
-    }*/
+    
+}
+
+extension SettingsPage : SettingsFirstDelegate,UIPickerViewDelegate,UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return SelectLanguageVM.languages.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return SelectLanguageVM.languages[row].languageName
+    }
+    
+    
+    func showPicker() {
+        heightPickerView.constant = 200
+        UIView.animate(withDuration: 0.5) {
+            self.pickerBar.alpha = 1
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func showPrivacy() {
+        print("Privacy")
+    }
+    
     
 }

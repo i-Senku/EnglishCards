@@ -19,7 +19,6 @@ class WordsPage: UIViewController{
     var wordList = [Words]()
     var favoriteList = [Favorites]()
     var myPath : IndexPath?
-    let synthesizerr = AVSpeechSynthesizer()
     var avPlayer : AVAudioPlayer?
     var progressCount : Float = 0.0
     
@@ -67,11 +66,6 @@ class WordsPage: UIViewController{
             self.touchImage.bounds.size.width = 50
             self.touchImage.bounds.size.height = 50
         }, completion: nil)
-    }
-    
-    func readText(content : String){
-        let speechUtterance = AVSpeechUtterance(string: content)
-        synthesizerr.speak(speechUtterance)
     }
     
     func setProgressView(){
@@ -236,7 +230,7 @@ extension WordsPage : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
                         }
                     }, completion: {_ in
                         if let index = collectionView.indexPathsForVisibleItems.first{
-                                self.readText(content: self.wordList[index.row].word)
+                                readText(content: self.wordList[index.row].word)
 
                             }
                     })

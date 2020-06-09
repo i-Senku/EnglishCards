@@ -13,9 +13,7 @@ class LanguagesPage: UIViewController {
     @IBOutlet weak var countryList: UITableView!
     
     var isSelectTable = false
-    
-    let languagesVM = SelectLanguageVM()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientLayer()
@@ -31,13 +29,13 @@ class LanguagesPage: UIViewController {
 
 extension LanguagesPage : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return languagesVM.languages.count
+        return SelectLanguageVM.languages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let countryName = languagesVM.languages[indexPath.row].languageName
-        let countryImage = languagesVM.languages[indexPath.row].languageImage
+        let countryName = SelectLanguageVM.languages[indexPath.row].languageName
+        let countryImage = SelectLanguageVM.languages[indexPath.row].languageImage
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "languages", for: indexPath) as! Languages

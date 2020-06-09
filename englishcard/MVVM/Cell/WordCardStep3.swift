@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import AVFoundation
 
-protocol CheckCelebrationDelegate {
+protocol CheckCelebrationDelegate : AnyObject {
     func checkCelebration(word:String)
 }
 
@@ -19,7 +18,7 @@ class WordCardStep3: UICollectionViewCell {
     @IBOutlet weak var wordName: UILabel!
     @IBOutlet weak var checkButton: UIButton!
         
-    var delegate : CheckCelebrationDelegate?
+    weak var delegate : CheckCelebrationDelegate?
     
     override func awakeFromNib() {
         let bottomLine = CALayer()

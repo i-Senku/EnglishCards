@@ -12,11 +12,15 @@ import AVFoundation
 var synthesizer = AVSpeechSynthesizer()
 
 func readText(content : String){
-    
-    let speechUtterance = AVSpeechUtterance(string: content)
-    speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-EN")
-    speechUtterance.rate = 0.4
-    synthesizer.speak(speechUtterance)
+    let defaults = UserDefaults.standard
+    if defaults.bool(forKey: "sound"){
+        let speechUtterance = AVSpeechUtterance(string: content)
+        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-EN")
+        speechUtterance.rate = 0.4
+        synthesizer.speak(speechUtterance)
+    }else{
+        print("Sound aktif değil")
+    }
     
 }
 

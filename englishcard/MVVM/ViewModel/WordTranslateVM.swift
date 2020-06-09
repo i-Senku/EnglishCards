@@ -12,8 +12,8 @@ class WordTranslateVM {
     var translateList : [Translate] = [Translate]()
     
     func fetchTranslateWord(completionHandler: @escaping ()->()){
-        fetchTranslate(language: "turkish") { (translateWord) in
-            self.translateList = translateWord
+        fetchTranslate(language: "turkish") { [weak self] translateWord in
+            self!.translateList = translateWord
             completionHandler()
         }
     }

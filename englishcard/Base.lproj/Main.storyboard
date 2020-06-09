@@ -932,22 +932,27 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybo-ns-0ql">
-                                                    <rect key="frame" x="374" y="11" width="20" height="22"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybo-ns-0ql">
+                                                    <rect key="frame" x="111.5" y="11" width="282.5" height="22"/>
                                                     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" image="arrow.right" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="showAction:" destination="Nif-RG-NoB" eventType="touchUpInside" id="8SG-9v-OWU"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Ybo-ns-0ql" secondAttribute="trailing" constant="20" id="7KK-wa-Cun"/>
                                                 <constraint firstItem="2tK-35-T3n" firstAttribute="centerY" secondItem="jzV-LO-ifj" secondAttribute="centerY" id="gaD-ou-E0c"/>
                                                 <constraint firstItem="2tK-35-T3n" firstAttribute="leading" secondItem="jzV-LO-ifj" secondAttribute="leadingMargin" constant="8" id="gfn-RN-ynC"/>
+                                                <constraint firstItem="Ybo-ns-0ql" firstAttribute="leading" secondItem="2tK-35-T3n" secondAttribute="trailing" constant="20" id="j0R-aQ-Qk2"/>
                                                 <constraint firstItem="Ybo-ns-0ql" firstAttribute="centerY" secondItem="jzV-LO-ifj" secondAttribute="centerY" id="mJF-bO-lMw"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="selectedButton" destination="Ybo-ns-0ql" id="YlW-jH-G7Z"/>
                                             <outlet property="settingName" destination="2tK-35-T3n" id="7VT-QT-C8y"/>
                                         </connections>
                                     </tableViewCell>
@@ -961,6 +966,9 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fJo-WP-v2D">
                                                     <rect key="frame" x="357" y="6.5" width="51" height="31"/>
                                                     <color key="onTintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="soundSwitch:" destination="yxN-aG-2v4" eventType="valueChanged" id="lgd-TQ-SSH"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvb-xQ-Mmp">
                                                     <rect key="frame" x="28" y="11.5" width="96.5" height="20.5"/>
@@ -974,11 +982,13 @@
                                                 <constraint firstItem="fJo-WP-v2D" firstAttribute="centerY" secondItem="hD1-Vc-6MB" secondAttribute="centerY" id="D4g-Nh-iCG"/>
                                                 <constraint firstItem="Uvb-xQ-Mmp" firstAttribute="centerY" secondItem="hD1-Vc-6MB" secondAttribute="centerY" id="NdZ-Mx-Wp2"/>
                                                 <constraint firstAttribute="trailing" secondItem="fJo-WP-v2D" secondAttribute="trailing" constant="8" id="se5-Yy-ZxV"/>
+                                                <constraint firstItem="fJo-WP-v2D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Uvb-xQ-Mmp" secondAttribute="trailing" constant="8" symbolic="YES" id="u7m-7u-VjN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <connections>
                                             <outlet property="settingName" destination="Uvb-xQ-Mmp" id="sGF-5r-NxK"/>
+                                            <outlet property="soundSwitch" destination="fJo-WP-v2D" id="zvU-Y5-PYL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -988,24 +998,64 @@
                                     <outlet property="delegate" destination="gHi-YO-TLo" id="eko-wc-DcA"/>
                                 </connections>
                             </tableView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYU-bc-mcP">
+                                <rect key="frame" x="0.0" y="719" width="414" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yY5-jA-TSO">
+                                        <rect key="frame" x="8" y="5" width="390" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="donePicker:" destination="gHi-YO-TLo" eventType="touchUpInside" id="m1p-nF-iJn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="yY5-jA-TSO" secondAttribute="trailing" constant="16" id="Gz3-NL-BOx"/>
+                                    <constraint firstItem="yY5-jA-TSO" firstAttribute="centerY" secondItem="CYU-bc-mcP" secondAttribute="centerY" id="ZhU-RU-MJU"/>
+                                    <constraint firstItem="yY5-jA-TSO" firstAttribute="leading" secondItem="CYU-bc-mcP" secondAttribute="leading" constant="8" id="mOf-Uo-0B0"/>
+                                    <constraint firstAttribute="height" constant="40" id="vfj-pb-uYK"/>
+                                </constraints>
+                            </view>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YxY-da-zDW">
+                                <rect key="frame" x="0.0" y="759" width="414" height="0.0"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="MU8-9E-ZRI"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="gHi-YO-TLo" id="Kuc-un-Qb3"/>
+                                    <outlet property="delegate" destination="gHi-YO-TLo" id="6s5-wk-IVH"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="YxY-da-zDW" firstAttribute="trailing" secondItem="XZ6-Qk-ylJ" secondAttribute="trailing" id="H8j-ln-DKw"/>
                             <constraint firstItem="XZ6-Qk-ylJ" firstAttribute="bottom" secondItem="xOL-cM-0xu" secondAttribute="bottom" id="LIR-vd-WJT"/>
+                            <constraint firstItem="CYU-bc-mcP" firstAttribute="bottom" secondItem="YxY-da-zDW" secondAttribute="top" id="PUs-is-ds7"/>
                             <constraint firstItem="xOL-cM-0xu" firstAttribute="leading" secondItem="XZ6-Qk-ylJ" secondAttribute="leading" id="SeL-43-x08"/>
                             <constraint firstItem="xOL-cM-0xu" firstAttribute="top" secondItem="XZ6-Qk-ylJ" secondAttribute="top" constant="20" id="Ufi-Uw-8eb"/>
+                            <constraint firstItem="YxY-da-zDW" firstAttribute="leading" secondItem="XZ6-Qk-ylJ" secondAttribute="leading" id="W3E-uy-JT1"/>
+                            <constraint firstItem="XZ6-Qk-ylJ" firstAttribute="trailing" secondItem="CYU-bc-mcP" secondAttribute="trailing" id="a1i-uW-0pN"/>
                             <constraint firstItem="XZ6-Qk-ylJ" firstAttribute="trailing" secondItem="xOL-cM-0xu" secondAttribute="trailing" id="h6h-2i-ivE"/>
+                            <constraint firstItem="XZ6-Qk-ylJ" firstAttribute="bottom" secondItem="YxY-da-zDW" secondAttribute="bottom" id="jM1-Vh-XzY"/>
+                            <constraint firstItem="CYU-bc-mcP" firstAttribute="leading" secondItem="XZ6-Qk-ylJ" secondAttribute="leading" id="vZh-vH-Bhy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XZ6-Qk-ylJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" largeTitleDisplayMode="always" id="vwa-V0-Scp"/>
                     <connections>
+                        <outlet property="heightPickerView" destination="MU8-9E-ZRI" id="hdh-RD-s8h"/>
+                        <outlet property="pickerBar" destination="CYU-bc-mcP" id="3ab-i0-GWh"/>
+                        <outlet property="pickerView" destination="YxY-da-zDW" id="G04-gT-9jd"/>
                         <outlet property="settingsList" destination="xOL-cM-0xu" id="Vux-zT-zvK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fop-Wg-hnS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-568" y="1359"/>
+            <point key="canvasLocation" x="-568.1159420289855" y="1358.7053571428571"/>
         </scene>
         <!--Celebration Page-->
         <scene sceneID="6Q1-s2-u1X">
