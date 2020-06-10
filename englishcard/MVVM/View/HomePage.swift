@@ -13,13 +13,13 @@ import Lottie
 final class HomePage: UIViewController {
     
     
-    
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var cardList: UICollectionView!
     
     var homeVM : HomePageVM = HomePageVM()
     var imageList : [UIImage?] = [UIImage?]()
     var id = 0
+    var levelCount = 0
     
     let animationView : AnimationView = {
         let view = AnimationView()
@@ -40,6 +40,8 @@ final class HomePage: UIViewController {
             let vc = segue.destination as! DetailsPage
             vc.detailsImage = image
             vc.id = id
+            vc.levelCount = levelCount
+            
         }
     }
     
@@ -97,7 +99,9 @@ extension HomePage : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let currentCell = collectionView.cellForItem(at: indexPath) as! Home
         let image = currentCell.imageView.image
-        id = homeVM.categories[indexPath.row].id
+        let categories = homeVM.categories[indexPath.row]
+        id = categories.id
+        levelCount = categories.levelCount
         performSegue(withIdentifier: "details", sender: image)
         
     }

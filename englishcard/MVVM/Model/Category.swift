@@ -12,5 +12,6 @@ struct Category : Decodable{
     let id : Int
     let categoryName : String
     let categoryImage : String
+    let levelCount : Int
     
 }

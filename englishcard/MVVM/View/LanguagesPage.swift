@@ -13,6 +13,7 @@ class LanguagesPage: UIViewController {
     @IBOutlet weak var countryList: UITableView!
     
     var isSelectTable = false
+    var index : Int!
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,8 @@ class LanguagesPage: UIViewController {
     
     @IBAction func selectLanguage(_ sender: Any) {
         if isSelectTable {
+            let language = SelectLanguageVM.languages[index].languageName.lowercased()
+            UserDefaults.standard.set(language, forKey: "mainlanguage")
             performSegue(withIdentifier: "toHomefromLanguage", sender: nil)
         }
     }
@@ -49,6 +52,7 @@ extension LanguagesPage : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.countryList.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        index = indexPath.row
         isSelectTable = true
         
     }

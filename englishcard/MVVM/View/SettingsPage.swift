@@ -32,6 +32,8 @@ class SettingsPage: UIViewController{
             self.pickerBar.alpha = 0
             self.view.layoutIfNeeded()
         }
+        let selectedLanguage = SelectLanguageVM.languages[pickerView.selectedRow(inComponent: 0)].languageName.lowercased()
+        UserDefaults.standard.set(selectedLanguage, forKey: "mainlanguage")
     }
     
 }

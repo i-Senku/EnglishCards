@@ -15,7 +15,7 @@ class DetailsPage: UIViewController {
     var detailsImage : UIImage?
     let detailsVM = DetailsPageVM()
     var id : Int?
-
+    var levelCount = 0
     
     
     override func viewDidLoad() {
@@ -25,25 +25,33 @@ class DetailsPage: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         detailsVM.getCategory(id: id) {
+            self.collectionView.reloadData()
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! WordsPage
-        vc.wordList = detailsVM.words        
+        if let level = sender as? Int {
+            let wordsOfLevel = detailsVM.words.filter { (words) -> Bool in
+                words.level == level
+            }
+            vc.wordList = wordsOfLevel
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+            self.tabBarController?.tabBar.isHidden = true
+        }
     }
 
 }
 extension DetailsPage : UICollectionViewDelegate,UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return levelCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "details", for: indexPath) as! Details
         cell.detailsImage.image = detailsImage
-        cell.levelText.text = "Level "+String(indexPath.row+1)
+        cell.levelText.text = "Level \(indexPath.row+1)"
         return cell
     }
     
@@ -58,7 +66,8 @@ extension DetailsPage : UICollectionViewDelegate,UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "wordcard", sender: nil)
+        
+        performSegue(withIdentifier: "wordcard", sender: indexPath.row+1)
     }
     
 }

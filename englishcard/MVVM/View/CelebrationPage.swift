@@ -44,16 +44,14 @@ class CelebrationPage: UIViewController {
     }
     
     @IBAction func dissmis(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
         initializeEmitter()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
 }

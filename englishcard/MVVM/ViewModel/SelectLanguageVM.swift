@@ -11,8 +11,8 @@ import Foundation
 struct SelectLanguageVM {
     
     static let languages : [SelectLanguage] = [
-        SelectLanguage(languageName: "Türkçe", languageImage: "turkey"),
-        SelectLanguage(languageName: "English", languageImage: "us"),
-        SelectLanguage(languageName: "Spanish", languageImage: "spain")
+        SelectLanguage(languageName: "turkish", languageImage: "turkey"),
+        SelectLanguage(languageName: "german", languageImage: "us"),
+        SelectLanguage(languageName: "spanish", languageImage: "spain")
     ]
 }

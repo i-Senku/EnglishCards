@@ -233,6 +233,7 @@ extension WordsPage : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
                                 readText(content: self.wordList[index.row].word)
 
                             }
+                      
                     })
                 }
                 touchImage.alpha = 0
@@ -309,7 +310,9 @@ extension WordsPage : AlertShower,QuizDelegate,CheckCelebrationDelegate,Favorite
                         self.playSound(sounds: .trueSound)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                             self.setProgressView()
-                            self.performSegue(withIdentifier: "celebration", sender: nil)
+                            self.dismiss(animated: true) {
+                                self.performSegue(withIdentifier: "celebration", sender: nil)
+                            }
                         }
                         
                     }else{
