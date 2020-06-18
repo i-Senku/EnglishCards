@@ -15,22 +15,22 @@ struct OnboardViewModel {
     static let descriptionFont = UIFont(name: "OpenSans-Regular", size: 14.0) ?? UIFont.systemFont(ofSize: 14.0)
     
     let items = [
-        OnboardingItemInfo(informationImage: UIImage(named: "Hotels")!,
+        OnboardingItemInfo(informationImage: UIImage(named: "Search")!,
                            title: "Search",
-                           description: "All hotels and hostels are sorted by hospitality rating",
+                           description: "Search category and your favorites words",
                            pageIcon: UIImage(named: "Hotels")!,
                            color: UIColor(red: 0.40, green: 0.56, blue: 0.71, alpha: 1.00),
                            titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont),
         
         OnboardingItemInfo(informationImage: UIImage(named: "Key")!,
                            title: "Offline Mode",
-                           description: "We carefully verify all banks before add them into the app",
+                           description: "Use all features in offline mode",
                            pageIcon: UIImage(named: "Key")!,
                            color: UIColor(red: 0.40, green: 0.69, blue: 0.71, alpha: 1.00),
                            titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont),
         
-        OnboardingItemInfo(informationImage: UIImage(named: "Hotels")!,
-                           title: "Premium",
+        OnboardingItemInfo(informationImage: UIImage(named: "Database")!,
+                           title: "Favorite Box",
                            description: "All local stores are categorized for your convenience",
                            pageIcon: UIImage(named: "Hotels")!,
                            color: UIColor(red: 0.61, green: 0.56, blue: 0.74, alpha: 1.00),

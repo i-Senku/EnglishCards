@@ -18,7 +18,7 @@
                         <subviews>
                             <button opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAG-R9-dcm">
                                 <rect key="frame" x="344" y="792" width="50" height="50"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Rma-VN-w4C"/>
                                     <constraint firstAttribute="width" constant="50" id="eLe-Ec-CSU"/>
@@ -201,15 +201,11 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="371" height="29"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEVEL 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDT-Rh-eLp">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="254" height="29"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="371" height="29"/>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock.open" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="566-Kf-o6w">
-                                                                            <rect key="frame" x="274" y="0.5" width="97" height="27.5"/>
-                                                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </imageView>
                                                                     </subviews>
                                                                 </stackView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySY-qQ-VZc">
@@ -221,11 +217,8 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="5eD-TB-1ab">
-                                                            <rect key="frame" x="20" y="370" width="371" height="2"/>
-                                                        </progressView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Jhs-i7-T5F">
-                                                            <rect key="frame" x="20" y="342" width="74" height="20"/>
+                                                            <rect key="frame" x="20" y="352" width="74" height="20"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qil-5q-Pbw">
                                                                     <rect key="frame" x="0.0" y="0.0" width="22" height="20"/>
@@ -242,17 +235,14 @@
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
                                                         <constraint firstItem="v9S-qW-aMm" firstAttribute="leading" secondItem="rSr-uo-tSs" secondAttribute="leading" id="0ZB-Tk-rsC"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Jhs-i7-T5F" secondAttribute="bottom" constant="20" id="3jo-HR-VlQ"/>
                                                         <constraint firstItem="8In-mw-HKr" firstAttribute="top" secondItem="v9S-qW-aMm" secondAttribute="bottom" constant="10" id="90y-F3-Qgs"/>
                                                         <constraint firstItem="8In-mw-HKr" firstAttribute="leading" secondItem="rSr-uo-tSs" secondAttribute="leading" constant="20" id="9H0-0k-aMO"/>
-                                                        <constraint firstAttribute="bottom" secondItem="5eD-TB-1ab" secondAttribute="bottom" constant="20" id="9Pn-1z-0oU"/>
-                                                        <constraint firstItem="5eD-TB-1ab" firstAttribute="leading" secondItem="rSr-uo-tSs" secondAttribute="leading" constant="20" id="Lmt-X2-daL"/>
                                                         <constraint firstAttribute="trailing" secondItem="v9S-qW-aMm" secondAttribute="trailing" id="QpL-Ro-DT0"/>
                                                         <constraint firstAttribute="trailing" secondItem="8In-mw-HKr" secondAttribute="trailing" constant="20" id="SCx-wY-gzP"/>
-                                                        <constraint firstItem="Jhs-i7-T5F" firstAttribute="leading" secondItem="rSr-uo-tSs" secondAttribute="leading" constant="20" id="evY-S1-TPd"/>
-                                                        <constraint firstAttribute="trailing" secondItem="5eD-TB-1ab" secondAttribute="trailing" constant="20" id="hNI-Fq-bMk"/>
                                                         <constraint firstItem="v9S-qW-aMm" firstAttribute="top" secondItem="rSr-uo-tSs" secondAttribute="top" id="k10-hc-htf"/>
                                                         <constraint firstItem="v9S-qW-aMm" firstAttribute="height" secondItem="rSr-uo-tSs" secondAttribute="height" multiplier="0.5" id="l8Q-Q7-1jZ"/>
-                                                        <constraint firstItem="5eD-TB-1ab" firstAttribute="top" secondItem="Jhs-i7-T5F" secondAttribute="bottom" constant="8" id="xan-S0-fh7"/>
+                                                        <constraint firstItem="Jhs-i7-T5F" firstAttribute="leading" secondItem="rSr-uo-tSs" secondAttribute="leading" constant="20" id="tGL-lP-y0X"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -284,46 +274,7 @@
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bfr-ca-gfM">
                                 <rect key="frame" x="20" y="76" width="374" height="59"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Xxp-7S-uYm">
-                                        <rect key="frame" x="15" y="13" width="105" height="20"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creditcard" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="u00-tH-8AQ">
-                                                <rect key="frame" x="0.0" y="2" width="22.5" height="16"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart.bar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Jid-Sr-K13">
-                                                <rect key="frame" x="28.5" y="1" width="25.5" height="18"/>
-                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wand.and.stars.inverse" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FeL-HK-r7Q">
-                                                <rect key="frame" x="60" y="0.5" width="21.5" height="19"/>
-                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="LPL-mS-R5E">
-                                                <rect key="frame" x="87.5" y="2.5" width="17.5" height="15.5"/>
-                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </imageView>
-                                        </subviews>
-                                    </stackView>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="HSd-Tb-SVj">
-                                        <rect key="frame" x="15" y="43" width="298" height="2"/>
-                                    </progressView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Xxp-7S-uYm" firstAttribute="top" secondItem="bfr-ca-gfM" secondAttribute="top" constant="13" id="16L-nI-rn5"/>
-                                    <constraint firstItem="HSd-Tb-SVj" firstAttribute="leading" secondItem="bfr-ca-gfM" secondAttribute="leading" constant="15" id="A9I-IH-hCc"/>
-                                    <constraint firstItem="Xxp-7S-uYm" firstAttribute="leading" secondItem="bfr-ca-gfM" secondAttribute="leading" constant="15" id="ChW-qY-5Ap"/>
-                                    <constraint firstItem="HSd-Tb-SVj" firstAttribute="top" secondItem="Xxp-7S-uYm" secondAttribute="bottom" constant="10" id="Nt8-DJ-5RH"/>
-                                    <constraint firstItem="HSd-Tb-SVj" firstAttribute="width" secondItem="bfr-ca-gfM" secondAttribute="width" multiplier="0.796791" id="WIr-v6-X1L"/>
-                                </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Completed 1/4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VoE-lQ-Poz">
-                                <rect key="frame" x="35" y="160" width="162" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -397,8 +348,8 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iEO-6f-rli">
-                                                            <rect key="frame" x="305" y="9.5" width="50" height="47.5"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iEO-6f-rli">
+                                                            <rect key="frame" x="305" y="8" width="50" height="50"/>
                                                             <gestureRecognizers/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="w5g-LV-JeR"/>
@@ -691,6 +642,16 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boo-Po-FP5">
+                                <rect key="frame" x="40" y="96" width="30" height="39"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="dissmisPage:" destination="JIv-79-MaP" eventType="touchUpInside" id="yeq-IG-aRC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -698,9 +659,11 @@
                             <constraint firstItem="rmb-R5-6eF" firstAttribute="top" secondItem="o8a-OB-Rle" secondAttribute="top" constant="30" id="8JV-gQ-L6X"/>
                             <constraint firstItem="rmb-R5-6eF" firstAttribute="leading" secondItem="7BA-HD-BKY" secondAttribute="leadingMargin" constant="20" id="Fuy-Kd-swt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rmb-R5-6eF" secondAttribute="trailing" constant="20" id="Q9y-Kl-63g"/>
+                            <constraint firstItem="boo-Po-FP5" firstAttribute="top" secondItem="rmb-R5-6eF" secondAttribute="bottom" constant="8" id="ROm-Rj-pvY"/>
                             <constraint firstItem="ONg-q1-ab3" firstAttribute="width" secondItem="7BA-HD-BKY" secondAttribute="width" id="Vzk-np-w9Z"/>
                             <constraint firstItem="ONg-q1-ab3" firstAttribute="centerY" secondItem="7BA-HD-BKY" secondAttribute="centerY" id="Z3Y-Nv-6xP"/>
                             <constraint firstItem="ONg-q1-ab3" firstAttribute="height" secondItem="7BA-HD-BKY" secondAttribute="height" multiplier="0.8" id="dRm-5z-omv"/>
+                            <constraint firstItem="boo-Po-FP5" firstAttribute="leading" secondItem="rmb-R5-6eF" secondAttribute="leading" id="w1f-zx-zkV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="o8a-OB-Rle"/>
                     </view>
@@ -1411,13 +1374,13 @@
                                         <rect key="frame" x="0.0" y="88" width="374" height="34"/>
                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QuX-08-38y">
                                         <rect key="frame" x="0.0" y="132" width="374" height="34"/>
                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -1665,15 +1628,10 @@
         <image name="animals" width="1280" height="952"/>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="bg" width="750" height="1334"/>
-        <image name="chart.bar" catalog="system" width="128" height="90"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
-        <image name="creditcard" catalog="system" width="128" height="91"/>
         <image name="forgot" width="1337" height="972"/>
         <image name="gear" catalog="system" width="128" height="119"/>
-        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
-        <image name="lock.open" catalog="system" width="128" height="112"/>
-        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="signUp" width="1043" height="777"/>
         <image name="spain" width="1200" height="800"/>
@@ -1682,7 +1640,6 @@
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="suit.diamond.fill" catalog="system" width="107" height="128"/>
         <image name="turkey" width="512" height="512"/>
-        <image name="wand.and.stars.inverse" catalog="system" width="128" height="113"/>
         <image name="welcome" width="1129" height="619"/>
     </resources>
 </document>

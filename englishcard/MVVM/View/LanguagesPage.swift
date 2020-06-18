@@ -69,7 +69,7 @@ extension LanguagesPage : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return countryList.bounds.size.height * 0.32
+        return countryList.bounds.size.height * 0.25
     }
     
     

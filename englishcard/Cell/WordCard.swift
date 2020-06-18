@@ -54,19 +54,17 @@ class WordCard: UICollectionViewCell {
 
     @objc func liked(){
         if firebaseAuth.currentUser != nil{
-            
             if !isItemSelect {
                 heartImage.image = UIImage(systemName: "heart.fill")
                 itemDelegate?.addItem()
                 delegate?.showAlert(title: "Added", message: "This word added your favorites box")
+                isItemSelect = !isItemSelect
             }else{
                 heartImage.image = UIImage(systemName: "heart")
                 itemDelegate?.deleteItem()
                 delegate?.showAlert(title: "Deleted", message: "This word deleted from your favorites box")
+                isItemSelect = !isItemSelect
             }
-            
-            print(isSelected)
-            isItemSelect = !isItemSelect
             NotificationCenter.default.post(name: .updateCoreData, object: nil)
             
         }else{

@@ -11,7 +11,7 @@ import AVFoundation
 import CoreData
 
 class WordsPage: UIViewController{
-
+    
     @IBOutlet weak var progressView: UIProgressView!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -22,11 +22,13 @@ class WordsPage: UIViewController{
     var avPlayer : AVAudioPlayer?
     var progressCount : Float = 0.0
     
+    var tempList : [Translate] = [Translate]()
+    
     let context = appDelegate.persistentContainer.viewContext
     
-
     
-    // MARK: Create Touch Image
+    
+    // MARK:- Create Touch Image
     let touchImage : UIImageView = {
         let screenSize = UIScreen.main.bounds.size
         let view = UIImageView(frame: CGRect(origin: CGPoint(x: screenSize.width * 0.4, y: screenSize.height * 0.6), size: CGSize(width: 100, height: 100)))
@@ -34,32 +36,36 @@ class WordsPage: UIViewController{
         view.alpha = 0
         return view
     }()
-
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchFavoriteListFromCoreData()
-        
-        wordTranslateVM.fetchTranslateWord {
-            var tempList : [Translate] = [Translate]()
-            self.wordTranslateVM.translateList.forEach { (item) in
-                self.wordList.forEach { (words) in
-                    if item.id == words.turkishID {
-                        tempList.append(item)
-                    }
-                }
-            }
-            self.wordTranslateVM.translateList = tempList
-            self.collectionView.reloadData()
-        }
         
         progressView.transform = CGAffineTransform(scaleX: 1.0, y: 5.0)
         view.addSubview(touchImage)
         touchAnimation()
     }
     
-    // MARK: Animation Settings for Touch Image
+    override func viewWillAppear(_ animated: Bool) {
+        fetchFavoriteListFromCoreData()
+        wordTranslateVM.fetchTranslateWord {
+            self.wordTranslateVM.translateList.forEach { (item) in
+                self.wordList.forEach { (words) in
+                    if item.id == words.turkishID {
+                        self.tempList.append(item)
+                    }
+                }
+            }
+            DispatchQueue.main.async {
+                self.wordTranslateVM.translateList = self.tempList
+                self.collectionView.reloadData()
+            }
+        }
+        
+    }
+    
+    // MARK:- Animation Settings for Touch Image
     private func touchAnimation(){
         UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat], animations: {
             self.touchImage.alpha = 1
@@ -92,18 +98,26 @@ class WordsPage: UIViewController{
         let url = URL(fileURLWithPath: path)
         
         do {
-           avPlayer =  try AVAudioPlayer(contentsOf: url)
+            avPlayer =  try AVAudioPlayer(contentsOf: url)
             print("Çaldı")
             avPlayer?.play()
-        } catch {
+        } catch{
+            
             print("Error Sound")
         }
+    }
+    
+    @IBAction func dissmisPage(_ sender: Any) {
+        print("Tıklandı")
+        navigationController?.popViewController(animated: true)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     
 }
 
-// MARK: CollectionViews Configrations
+// MARK:- CollectionViews Configrations
 
 extension WordsPage : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
@@ -115,32 +129,34 @@ extension WordsPage : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
         return wordList.count
     }
     
-    // MARK: Configration of Cells
+    // MARK:- Configration of Cells
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath) as! WordCard
         let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath) as! WordCardStep2
         let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "cell3", for: indexPath) as! WordCardStep3
         
-        // MARK: First Card Section = 0
+        // MARK:- First Card Section = 0
         if indexPath.section == 0 {
             cell1.delegate = self
             cell1.itemDelegate = self
             cell1.wordName.text = wordList[indexPath.row].word
             cell1.wordImageLabel.text = "🙈"
+            
             cell1.heartImage.image = UIImage(systemName: "heart")
+            cell1.isItemSelect = false
             
             favoriteList.forEach { (item) in
                 if item.id == wordList[indexPath.row].id {
                     cell1.isItemSelect = true
                     cell1.heartImage.image = UIImage(systemName: "heart.fill")
-                }else{
-                    cell1.heartImage.image = UIImage(systemName: "heart")
-                    cell1.isItemSelect = false
+                    print(item.id)
+                    print(wordList[indexPath.row].id)
                 }
             }
             
-        }// MARK: Second Card Section = 1
+        }
+            // MARK:- Second Card Section = 1
         else if indexPath.section == 1 {
             
             let id = wordList[indexPath.row].turkishID
@@ -156,7 +172,7 @@ extension WordsPage : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
                 randomBtn.setTitle(trueWord?.wordName, for: .normal)
                 randomBtn.tag = trueWord!.id
                 randomBtn.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
-
+                
                 tempList.removeAll { (item) -> Bool in
                     item.id == trueWord?.id
                 }
@@ -173,7 +189,7 @@ extension WordsPage : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
             cell2.quizDelegate = self
             
         }else{
-            // MARK: Last Card Section = 2
+            // MARK:- Last Card Section = 2
             cell3.wordName.text = wordTranslateVM.translateList[indexPath.row].wordName
             cell3.wordText.text = ""
             cell3.checkButton.setTitle("Check", for: .normal)
@@ -185,13 +201,13 @@ extension WordsPage : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
     }
     
     
-    // MARK: CollectionView Size
+    // MARK:- CollectionView Size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
     }
     
-    // MARK: Last IndexPath Found
+    // MARK:- Last IndexPath Found
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         for cell in collectionView.visibleCells{
             if let row = collectionView.indexPath(for: cell){
@@ -230,20 +246,20 @@ extension WordsPage : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
                         }
                     }, completion: {_ in
                         if let index = collectionView.indexPathsForVisibleItems.first{
-                                readText(content: self.wordList[index.row].word)
-
-                            }
-                      
+                            readText(content: self.wordList[index.row].word)
+                            
+                        }
+                        
                     })
                 }
                 touchImage.alpha = 0
             }
-
+            
         }
     }
 }
 
-// MARK: Alert and Celebration Delegate Functions
+// MARK:- Alert and Celebration Delegate Functions
 extension WordsPage : AlertShower,QuizDelegate,CheckCelebrationDelegate,FavoriteItemDelegate{
     
     func addItem() {
@@ -323,14 +339,14 @@ extension WordsPage : AlertShower,QuizDelegate,CheckCelebrationDelegate,Favorite
                             self.collectionView.scrollToItem(at: nextPath, at: .centeredHorizontally, animated: true)
                         }
                     }
-
+                    
                 }else{
                     cell.checkButton.shake()
                     self.playSound(sounds: .falseSound)
                 }
                 
             }else{
-                let alert = UIAlertController(title: "EMPTY", message: "This textfield cannot be empty", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Empty", message: "This textfield cannot be empty", preferredStyle: .alert)
                 
                 let actionOkey = UIAlertAction(title: "OK", style: .default) { (_) in
                 }

@@ -219,6 +219,7 @@
 		FE30C65E2471C77B00DE09E3 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				FEC496DE2438F39900A1BA74 /* Services */,
 				FE8B4B05248BAEEA005EDD8B /* progress.json */,
 				FE0369992482A742000BBB02 /* water.json */,
 				FE30C6612471D16100DE09E3 /* TwitterHeartButton.json */,
@@ -260,9 +261,12 @@
 		FEC496A52438F31F00A1BA74 /* englishcard */ = {
 			isa = PBXGroup;
 			children = (
+				FED1C6DA246FFDE800192181 /* Enums */,
+				FEC496DD2438F39200A1BA74 /* Extensions */,
 				FE3F0EA8247B1BA000593352 /* Sounds */,
 				FE1696172476D3D600624E07 /* Speech */,
 				FE30C65E2471C77B00DE09E3 /* Animation */,
+				FEF686852440776C00577FA3 /* Cell */,
 				FEC496D92438F35300A1BA74 /* MVVM */,
 				FEC496A62438F31F00A1BA74 /* AppDelegate.swift */,
 				FEC496A82438F31F00A1BA74 /* SceneDelegate.swift */,
@@ -297,10 +301,6 @@
 		FEC496D92438F35300A1BA74 /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
-				FED1C6DA246FFDE800192181 /* Enums */,
-				FEC496DE2438F39900A1BA74 /* Services */,
-				FEC496DD2438F39200A1BA74 /* Extensions */,
-				FEF686852440776C00577FA3 /* Cell */,
 				FEC496DA2438F36500A1BA74 /* Model */,
 				FEC496DC2438F38000A1BA74 /* View */,
 				FEC496DB2438F37600A1BA74 /* ViewModel */,

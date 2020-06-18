@@ -29,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if result {
             window?.rootViewController = tabBarVC
         }else{
+            UserDefaults.standard.set(true, forKey: "sound")
             window?.rootViewController = onboardPageVC
         }
         
