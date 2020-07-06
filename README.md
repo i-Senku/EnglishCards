@@ -4,17 +4,17 @@ Vocabulary learning practice with flash card.
 
 # Languages / Frameworks Used
 
-Swift 5
-UIKit
+Swift 5<br>
+UIKit<br>
 CoreAnimation
 
 # 3rd Party
 
-Lottie
-Alamofire
-Firebase
-KingFisher
-Paper_onboarding
+Lottie<br>
+Alamofire<br>
+Firebase<br>
+KingFisher<br>
+Paper_onboarding<br>
 
 
 # Design Pattern
@@ -24,10 +24,10 @@ MVVM
 
 # Tested On
 
-Iphone 11 Max Pro
-Iphone 11
-Iphone 8 plus
-Ipad 9 pro
+Iphone 11 Max Pro<br>
+Iphone 11<br>
+Iphone 8 plus<br>
+Ipad 9 pro<br>
 
 # Images
 
